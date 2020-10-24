@@ -1,1 +1,1 @@
-export { Tick, Page } from "./posts/postsActions";
+export { serverRenderClock, startClock } from "./tick/tickActions";
