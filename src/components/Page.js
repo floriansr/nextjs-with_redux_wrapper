@@ -1,18 +1,20 @@
-import useInterval from "../lib/useInterval";
-import { useDispatch, useSelector } from "react-redux";
-import { Tick } from "../redux";
+import Link from 'next/link'
+import { connect } from 'react-redux'
+import Clock from './Clock'
 
-export default function Page() {
-  const dispatch = useDispatch();
-  const { time } = useSelector((state) => state.state);
-
-  useInterval(() => {
-    dispatch(Tick(Date.now()));
-  }, 1000);
-
-  return (
-    <>
-      <h5>{time}</h5>
-    </>
-  );
+const Page = ({ title, linkTo, tick }) => {
+  console.log("Page -> tick", tick)
+  return (<>
+    <div>
+          <h1>{title}</h1>
+      <Clock lastUpdate={tick.lastUpdate} light={tick.light} />
+      <nav>
+        <Link href={linkTo}>
+          <a>Navigate</a>
+        </Link>
+      </nav>
+    </div>
+  </>)
 }
+
+export default connect((state) => state)(Page)
