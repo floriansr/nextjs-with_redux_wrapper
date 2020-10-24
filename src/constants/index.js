@@ -1,13 +1,13 @@
-import { projectsReducer } from "../redux/posts/postsReducer.ts";
+import { tick } from "../redux/tick/tickReducer.ts";
 import { combineReducers } from "redux";
 
 export const initialState = {
   state: {
-    time: 0,
-    light: "init"
+    lastUpdate: 0,
+    light: false,
   }
 };
 
 export const rootReducer = combineReducers({
-  state: projectsReducer,
+  tick,
 });
